@@ -1,0 +1,2 @@
+frontend: npm run dev - opresti frontend cu ctrl+c
+backend (api): uvicorn app.main;app --reload

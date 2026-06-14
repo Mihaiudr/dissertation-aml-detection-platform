@@ -1,0 +1,8 @@
+.env
+aml_guard.db
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
