@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UploadCloud, Loader2 } from "lucide-react";
-import { uploadTransactions } from "../api";
+import { scoreDemoDataset, uploadTransactions } from "../api";
 
 function BatchScoring({ setSummary, setAlerts, setActivePage }) {
   const [file, setFile] = useState(null);
@@ -27,6 +27,25 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
     }
   }
 
+  async function handleDemoDataset() {
+    try {
+      setLoading(true);
+      setUploadName("Demo dataset");
+
+      const data = await scoreDemoDataset();
+
+      setSummary(data.summary);
+      setAlerts(data.alerts);
+
+      setActivePage("alerts");
+    } catch (error) {
+      console.error(error);
+      alert("Demo dataset failed. Check if backend is running and the demo file exists.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section className="batch-page">
       <div className="upload-card">
@@ -38,6 +57,17 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
         <p>
           Use the same transaction format as the AML dataset.
         </p>
+
+        <button
+          className="demo-dataset-btn"
+          type="button"
+          onClick={handleDemoDataset}
+          disabled={loading}
+        >
+          {loading ? "Scoring dataset..." : "Use Demo Dataset"}
+        </button>
+
+        <span className="upload-divider">or upload your own CSV</span>
 
         <input
           type="file"

@@ -897,6 +897,19 @@ body {
   cursor: pointer;
 }
 
+.upload-card .demo-dataset-btn {
+  background: #19dcc0;
+  color: #082f34;
+}
+
+.upload-divider {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .upload-card button:disabled {
   cursor: not-allowed;
   opacity: 0.55;

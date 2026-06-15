@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 COPY app ./app
 COPY models ./models
+COPY data ./data
 
 EXPOSE 8000
 

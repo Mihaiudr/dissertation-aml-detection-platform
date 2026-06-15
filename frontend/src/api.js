@@ -69,6 +69,18 @@ export async function uploadTransactions(file) {
   return response.data;
 }
 
+export async function scoreDemoDataset() {
+  const response = await axios.post(
+    `${API_BASE_URL}/predict-demo`,
+    {},
+    {
+      headers: authHeaders(),
+    }
+  );
+
+  return response.data;
+}
+
 export async function generateExplanation(alert) {
   const response = await axios.post(
     `${API_BASE_URL}/explain-alert`,

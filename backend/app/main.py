@@ -1,5 +1,6 @@
 import os
 from io import StringIO
+from pathlib import Path
 
 import pandas as pd
 from fastapi import Depends, FastAPI, File, HTTPException, UploadFile
@@ -20,6 +21,7 @@ CORS_ORIGINS = [
     ).split(",")
     if origin.strip()
 ]
+DEMO_DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "dataset_demo.csv"
 
 app = FastAPI(
     title="AML Fraud Detection API",
@@ -71,6 +73,32 @@ async def predict_batch_endpoint(
         decoded = contents.decode("utf-8")
         df = pd.read_csv(StringIO(decoded))
 
+        summary, alerts = predict_batch(df)
+
+        return {
+            "summary": summary,
+            "alerts": alerts.to_dict(orient="records"),
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=str(e),
+        )
+
+
+@app.post("/predict-demo")
+async def predict_demo_endpoint(
+    current_user: User = Depends(get_current_user),
+):
+    if not DEMO_DATASET_PATH.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Demo dataset was not found on the backend.",
+        )
+
+    try:
+        df = pd.read_csv(DEMO_DATASET_PATH)
         summary, alerts = predict_batch(df)
 
         return {
