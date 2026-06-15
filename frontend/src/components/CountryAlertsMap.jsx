@@ -85,11 +85,11 @@ function CountryAlertsMap({ alerts }) {
   const countryCounts = new Map();
 
   alerts.forEach((alert) => {
-    const countries = [alert.Sender_bank_location, alert.Receiver_bank_location].filter(Boolean);
+    const country = alert.Receiver_bank_location || alert.Sender_bank_location;
 
-    countries.forEach((country) => {
+    if (country) {
       countryCounts.set(country, (countryCounts.get(country) || 0) + 1);
-    });
+    }
   });
 
   const countries = [...countryCounts.entries()]
@@ -104,7 +104,7 @@ function CountryAlertsMap({ alerts }) {
       <div className="section-header compact">
         <div>
           <h2>Alerts by Country</h2>
-          <p>Sender and receiver bank locations represented in flagged transactions.</p>
+          <p>Each flagged transaction counted once by receiver bank location.</p>
         </div>
       </div>
 
