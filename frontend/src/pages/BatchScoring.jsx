@@ -12,6 +12,8 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
 
     try {
       setLoading(true);
+      setSummary(null);
+      setAlerts([]);
 
       const data = await uploadTransactions(file);
 
@@ -30,6 +32,8 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
   async function handleDemoDataset() {
     try {
       setLoading(true);
+      setSummary(null);
+      setAlerts([]);
       setUploadName("Demo dataset");
 
       const data = await scoreDemoDataset();
