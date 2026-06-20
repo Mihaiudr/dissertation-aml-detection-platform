@@ -1040,31 +1040,16 @@ body {
 }
 
 .brand-mark {
-  position: relative;
   width: 38px;
   height: 42px;
-  display: inline-block;
+  display: inline-flex;
+  flex: 0 0 auto;
 }
 
-.brand-mark i {
-  position: absolute;
-  inset: 0;
+.brand-mark img {
+  display: block;
   width: 100%;
   height: 100%;
-  background: #19dcc0;
-  clip-path: polygon(50% 0, 88% 15%, 88% 54%, 50% 100%, 12% 54%, 12% 15%);
-}
-
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 13px;
-  width: 15px;
-  height: 8px;
-  border-left: 4px solid white;
-  border-bottom: 4px solid white;
-  transform: rotate(-45deg);
 }
 
 .landing-links,

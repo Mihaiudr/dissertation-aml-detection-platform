@@ -20,7 +20,7 @@ function Sidebar({ activePage, setActivePage, onLogout }) {
     <aside className="sidebar">
       <button className="brand" type="button" onClick={onLogout}>
         <span className="brand-mark app-brand-mark" aria-hidden="true">
-          <i />
+          <img src="/aml-guard-logo.svg" alt="" />
         </span>
 
         <div>

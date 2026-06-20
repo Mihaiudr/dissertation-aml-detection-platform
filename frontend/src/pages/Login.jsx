@@ -70,7 +70,7 @@ function Login({ onLogin }) {
       <header className="landing-nav">
         <button className="landing-brand" type="button" onClick={() => setPublicPage("home")}>
           <span className="brand-mark" aria-hidden="true">
-            <i />
+            <img src="/aml-guard-logo.svg" alt="" />
           </span>
           <strong>AML Guard</strong>
         </button>
