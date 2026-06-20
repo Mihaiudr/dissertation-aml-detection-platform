@@ -59,7 +59,7 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
 
         <h3>CSV Transaction Dataset</h3>
         <p>
-          Use the same transaction format as the AML dataset.
+          Use the engineered AML feature format expected by the deployed XGBoost model.
         </p>
 
         <button
@@ -71,7 +71,7 @@ function BatchScoring({ setSummary, setAlerts, setActivePage }) {
           {loading ? "Scoring dataset..." : "Use Demo Dataset"}
         </button>
 
-        <span className="upload-divider">or upload your own CSV</span>
+        <span className="upload-divider">or upload your own engineered CSV</span>
 
         <input
           type="file"
