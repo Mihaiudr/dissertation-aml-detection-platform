@@ -13,6 +13,8 @@ from app.model_loader  import (
 
 def preprocess_batch(df: pd.DataFrame) -> pd.DataFrame:
     original_df = df.copy()
+    cols_remove = ['Sender_account', 'Receiver_account','Is_laundering','Laundering_type','Full_Date']
+    df = df.drop(columns=cols_remove, errors="ignore")
 
     #encode categoricals
     encoded = encoder.transform(df[categorical_columns])

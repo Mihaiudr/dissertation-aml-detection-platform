@@ -21,7 +21,7 @@ CORS_ORIGINS = [
     ).split(",")
     if origin.strip()
 ]
-DEMO_DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "x_test_demo.csv"
+DEMO_DATASET_PATH = Path(__file__).resolve().parent.parent / "data" / "test_demo.csv"
 
 app = FastAPI(
     title="AML Fraud Detection API",
