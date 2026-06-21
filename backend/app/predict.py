@@ -51,6 +51,18 @@ def predict_batch(df: pd.DataFrame):
     results = original_df.copy()
     results['fraud_probability'] = probs
     results['prediction'] = np.where(preds == 1, 'Fraud', 'Normal')
+    results['risk_level'] = np.select(
+        [
+            results['fraud_probability'] >= 0.9,
+            results['fraud_probability'] >= 0.7
+        ],
+
+        [
+            'High',
+            'Medium'
+        ],
+        default='Low'
+    )
     total_alerts = int((preds == 1).sum())
 
     summary = {
